@@ -1,0 +1,5 @@
+Credentials cache: API:4557
+        Principal: pforesti@42NICE.FR
+
+  Issued                Expires               Principal
+Jul  5 14:48:17 2021  Jul  6 00:48:17 2021  krbtgt/42NICE.FR@42NICE.FR
