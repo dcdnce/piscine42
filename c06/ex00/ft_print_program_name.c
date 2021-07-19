@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_print_program_name.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pforesti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/12 15:23:08 by pforesti          #+#    #+#             */
-/*   Updated: 2021/07/15 09:11:28 by pforesti         ###   ########.fr       */
+/*   Created: 2021/07/15 09:15:49 by pforesti          #+#    #+#             */
+/*   Updated: 2021/07/15 09:50:55 by pforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putnbr(int nb)
+int	main(int ac, char **av)
 {
-	unsigned int	n;
-	char			c;
+	int	i;
 
-	if (nb < 0)
+	i = 0;
+	while (av[ac - 1][i])
 	{
-		write(1, "-", 1);
-		n = nb * -1;
+		write(1, &av[0][i], 1);
+		i++;
 	}
-	else
-		n = nb;
-	if (n > 9)
-	{
-		ft_putnbr(n / 10);
-		n %= 10;
-	}
-	c = '0' + n;
-	write(1, &c, 1);
+	write(1, "\n", 1);
+	return (0);
 }

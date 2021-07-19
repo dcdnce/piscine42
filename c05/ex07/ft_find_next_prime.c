@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_find_next_prime.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pforesti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/12 15:23:08 by pforesti          #+#    #+#             */
-/*   Updated: 2021/07/15 09:11:28 by pforesti         ###   ########.fr       */
+/*   Created: 2021/07/19 10:26:27 by pforesti          #+#    #+#             */
+/*   Updated: 2021/07/19 10:26:48 by pforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putnbr(int nb)
+int	ft_is_prime(int	nb)
 {
-	unsigned int	n;
-	char			c;
+	int	i;
 
-	if (nb < 0)
+	i = 2;
+	if (nb < 2)
+		return (0);
+	while (i * i < nb)
 	{
-		write(1, "-", 1);
-		n = nb * -1;
+		if (!(nb % i))
+			return (0);
+		i++;
 	}
-	else
-		n = nb;
-	if (n > 9)
-	{
-		ft_putnbr(n / 10);
-		n %= 10;
-	}
-	c = '0' + n;
-	write(1, &c, 1);
+	return (1);
+}
+
+int	ft_find_next_prime(int nb)
+{
+	while (!(ft_is_prime(nb)))
+		nb += 1;
+	return (nb);
 }

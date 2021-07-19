@@ -6,16 +6,9 @@
 /*   By: pforesti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 18:57:10 by pforesti          #+#    #+#             */
-/*   Updated: 2021/07/13 20:49:22 by pforesti         ###   ########.fr       */
+/*   Updated: 2021/07/14 21:33:20 by pforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-int	ft_isspace(char c)
-{
-	if ((c >= 9 && c <= 13) || (c == ' '))
-		return (1);
-	return (0);
-}
-
 int	ft_atoi(char *str)
 {
 	int	i;
@@ -23,21 +16,23 @@ int	ft_atoi(char *str)
 	int	nb;
 
 	i = 0;
-	sign = -1;
+	sign = 0;
 	nb = 0;
-	while (ft_isspace(str[i]))
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
 		i++;
 	while (str[i] == '+' || str[i] == '-')
 	{
 		if (str[i] == '-')
-			sign *= -1;
+			sign++;
 		i++;
 	}
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		nb *= 10;
-		nb += str[i] - 48;
+		nb += (int)(str[i] - '0');
 		i++;
 	}
-	return (nb * sign);
+	if (sign % 2)
+		nb *= -1;
+	return (nb);
 }

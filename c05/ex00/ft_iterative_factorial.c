@@ -1,34 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_iterative_factorial.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pforesti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/12 15:23:08 by pforesti          #+#    #+#             */
-/*   Updated: 2021/07/15 09:11:28 by pforesti         ###   ########.fr       */
+/*   Created: 2021/07/14 17:03:23 by pforesti          #+#    #+#             */
+/*   Updated: 2021/07/19 10:41:53 by pforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putnbr(int nb)
+int	ft_iterative_factorial(int nb)
 {
-	unsigned int	n;
-	char			c;
+	int	n;
+	int	i;
 
+	n = 1;
+	i = 1;
 	if (nb < 0)
-	{
-		write(1, "-", 1);
-		n = nb * -1;
-	}
-	else
-		n = nb;
-	if (n > 9)
-	{
-		ft_putnbr(n / 10);
-		n %= 10;
-	}
-	c = '0' + n;
-	write(1, &c, 1);
+		return (0);
+	while (--nb > 0 && i++)
+		n *= i;
+	return (n);
 }

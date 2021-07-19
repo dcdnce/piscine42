@@ -1,34 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_fibonacci.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pforesti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/12 15:23:08 by pforesti          #+#    #+#             */
-/*   Updated: 2021/07/15 09:11:28 by pforesti         ###   ########.fr       */
+/*   Created: 2021/07/14 18:16:01 by pforesti          #+#    #+#             */
+/*   Updated: 2021/07/14 22:42:16 by pforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putnbr(int nb)
+int	ft_fibonacci(int index)
 {
-	unsigned int	n;
-	char			c;
-
-	if (nb < 0)
-	{
-		write(1, "-", 1);
-		n = nb * -1;
-	}
-	else
-		n = nb;
-	if (n > 9)
-	{
-		ft_putnbr(n / 10);
-		n %= 10;
-	}
-	c = '0' + n;
-	write(1, &c, 1);
+	if (index < 0)
+		return (-1);
+	if (index < 2)
+		return (index);
+	return ((ft_fibonacci(index - 1)) + (ft_fibonacci(index - 2)));
 }

@@ -1,34 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_stock_str.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pforesti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/12 15:23:08 by pforesti          #+#    #+#             */
-/*   Updated: 2021/07/15 09:11:28 by pforesti         ###   ########.fr       */
+/*   Created: 2021/07/19 11:10:34 by pforesti          #+#    #+#             */
+/*   Updated: 2021/07/19 11:10:37 by pforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#ifndef FT_STOCK_STR_H
+# define FT_STOCK_STR_H
 
-#include <unistd.h>
-
-void	ft_putnbr(int nb)
+typedef struct s_stock_str
 {
-	unsigned int	n;
-	char			c;
+	int		size;
+	char	*str;
+	char	*copy;
+}	t_stock_str;
 
-	if (nb < 0)
-	{
-		write(1, "-", 1);
-		n = nb * -1;
-	}
-	else
-		n = nb;
-	if (n > 9)
-	{
-		ft_putnbr(n / 10);
-		n %= 10;
-	}
-	c = '0' + n;
-	write(1, &c, 1);
-}
+#endif

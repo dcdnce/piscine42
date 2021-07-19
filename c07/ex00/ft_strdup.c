@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pforesti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/12 15:23:08 by pforesti          #+#    #+#             */
-/*   Updated: 2021/07/15 09:11:28 by pforesti         ###   ########.fr       */
+/*   Created: 2021/07/15 13:08:32 by pforesti          #+#    #+#             */
+/*   Updated: 2021/07/15 15:30:01 by pforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdlib.h>
 
-void	ft_putnbr(int nb)
+char	*ft_strdup(char *src)
 {
-	unsigned int	n;
-	char			c;
+	char	*dest;
+	int		i;
 
-	if (nb < 0)
-	{
-		write(1, "-", 1);
-		n = nb * -1;
-	}
-	else
-		n = nb;
-	if (n > 9)
-	{
-		ft_putnbr(n / 10);
-		n %= 10;
-	}
-	c = '0' + n;
-	write(1, &c, 1);
+	i = 0;
+	while (src[i])
+		i++;
+	dest = malloc((i + 1) * sizeof(*dest));
+	if (!dest)
+		return (NULL);
+	i = -1;
+	while (src[++i])
+		dest[i] = src[i];
+	dest[i] = '\0';
+	return (dest);
 }

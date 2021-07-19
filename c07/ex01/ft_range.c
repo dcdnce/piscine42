@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_range.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pforesti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/12 15:23:08 by pforesti          #+#    #+#             */
-/*   Updated: 2021/07/15 09:11:28 by pforesti         ###   ########.fr       */
+/*   Created: 2021/07/15 13:45:08 by pforesti          #+#    #+#             */
+/*   Updated: 2021/07/15 14:26:17 by pforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <unistd.h>
-
-void	ft_putnbr(int nb)
+#include <stdlib.h>
+int	*ft_range(int min, int max)
 {
-	unsigned int	n;
-	char			c;
+	int	*tab;
+	int	i;
 
-	if (nb < 0)
-	{
-		write(1, "-", 1);
-		n = nb * -1;
-	}
-	else
-		n = nb;
-	if (n > 9)
-	{
-		ft_putnbr(n / 10);
-		n %= 10;
-	}
-	c = '0' + n;
-	write(1, &c, 1);
+	i = -1;
+	if ((max - min) < 1)
+		return (NULL);
+	tab = malloc((max - min) * sizeof(tab));
+	if (!tab)
+		return (NULL);
+	while (++i < (max - min))
+		tab[i] = min + i;
+	return (tab);
 }

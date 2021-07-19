@@ -6,7 +6,7 @@
 /*   By: pforesti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/11 13:22:49 by pforesti          #+#    #+#             */
-/*   Updated: 2021/07/11 15:24:15 by pforesti         ###   ########.fr       */
+/*   Updated: 2021/07/14 10:12:43 by pforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 int	ft_strncmp(char *s1, char *s2, unsigned int n)

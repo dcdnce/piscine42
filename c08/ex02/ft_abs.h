@@ -1,34 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_abs.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pforesti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/12 15:23:08 by pforesti          #+#    #+#             */
-/*   Updated: 2021/07/15 09:11:28 by pforesti         ###   ########.fr       */
+/*   Created: 2021/07/19 11:12:19 by pforesti          #+#    #+#             */
+/*   Updated: 2021/07/19 11:12:21 by pforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#ifndef FT_ABS_H
+# define FT_ABS_H
 
-#include <unistd.h>
+# define ABS(Value) ((Value < 0) ? - Value : Value)
 
-void	ft_putnbr(int nb)
-{
-	unsigned int	n;
-	char			c;
-
-	if (nb < 0)
-	{
-		write(1, "-", 1);
-		n = nb * -1;
-	}
-	else
-		n = nb;
-	if (n > 9)
-	{
-		ft_putnbr(n / 10);
-		n %= 10;
-	}
-	c = '0' + n;
-	write(1, &c, 1);
-}
+#endif
