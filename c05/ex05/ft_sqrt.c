@@ -6,20 +6,25 @@
 /*   By: pforesti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/14 22:43:02 by pforesti          #+#    #+#             */
-/*   Updated: 2021/07/18 04:21:09 by pforesti         ###   ########.fr       */
+/*   Updated: 2021/07/19 14:17:12 by pforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-int	ft_sqrt(int	nb)
+int	ft_sqrt(int nb)
 {
-	int	n;
+	unsigned int	n;
+	unsigned int	nb_u;
 
-	n = nb / 2;
-	while (n * n > nb)
-		n /= 2;
-	while (n * n < nb)
-		n += 1;
-	if (n * n != nb)
+	n = 1;
+	nb_u = nb;
+	if (nb_u <= 0)
 		return (0);
-	return (n);
+	if (nb_u == 1)
+		return (1);
+	while (n * n < nb_u)
+	{
+		n++;
+		if (n * n == nb_u)
+			return (n);
+	}
+	return (0);
 }

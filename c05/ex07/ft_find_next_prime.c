@@ -6,28 +6,35 @@
 /*   By: pforesti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/19 10:26:27 by pforesti          #+#    #+#             */
-/*   Updated: 2021/07/19 10:26:48 by pforesti         ###   ########.fr       */
+/*   Updated: 2021/07/19 14:19:12 by pforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_is_prime(int	nb)
 {
-	int	i;
+	int	d1;
+	int	d2;
 
-	i = 2;
-	if (nb < 2)
+	d1 = 2;
+	d2 = nb / 2;
+	if (nb <= 1)
 		return (0);
-	while (i * i < nb)
+	while (d1 <= d2)
 	{
-		if (!(nb % i))
+		if (!(nb % d1))
 			return (0);
-		i++;
+		if (!(nb % d2))
+			return (0);
+		d1 += 1;
+		d2 -= 1;
 	}
 	return (1);
 }
 
 int	ft_find_next_prime(int nb)
 {
+	if (nb <= 1)
+		return (0);
 	while (!(ft_is_prime(nb)))
 		nb += 1;
 	return (nb);

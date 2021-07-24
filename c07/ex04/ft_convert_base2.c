@@ -6,19 +6,21 @@
 /*   By: pforesti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 01:18:45 by pforesti          #+#    #+#             */
-/*   Updated: 2021/07/18 03:45:43 by pforesti         ###   ########.fr       */
+/*   Updated: 2021/07/21 10:05:15 by pforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-int	ft_strlen(char *str);
+int				ft_check(unsigned char c, char *base);
+int				ft_nbrlen(unsigned int n, char *base_to);
+unsigned int	ft_strlen(char *str);
 
-int	ft_nbrlen(int n, char *base_to)
+int	ft_nbrlen(unsigned int n, char *base_to)
 {
 	if (n < ft_strlen(base_to))
 		return (1);
 	return (1 + ft_nbrlen(n / ft_strlen(base_to), base_to));
 }
 
-int	ft_strlen(char *str)
+unsigned int	ft_strlen(char *str)
 {
 	int	i;
 
