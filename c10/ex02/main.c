@@ -6,10 +6,21 @@
 /*   By: pforesti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/23 09:59:15 by pforesti          #+#    #+#             */
-/*   Updated: 2021/07/23 22:32:55 by pforesti         ###   ########.fr       */
+/*   Updated: 2021/07/26 20:03:49 by pforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft.h"
+
+int	ft_read_stdin(int fd_in)
+{
+	static char	buffer[TAILLE_BUF];
+	int			nb_read;
+
+	nb_read = 1;
+	while (nb_read)
+		nb_read = read(fd_in, buffer, TAILLE_BUF);
+	return (nb_read);
+}
 
 int	ft_file_opener(char **av, int i)
 {
@@ -45,7 +56,7 @@ void	ft_tail(char *buffer, char *path, int nb_bytes, int ac)
 {
 	int	i;
 
-	i = ft_strlen(buffer) - nb_bytes - 1;
+	i = ft_strlen(buffer) - nb_bytes;
 	if (i < 0)
 		i = 0;
 	if (ac > 4)
@@ -54,8 +65,11 @@ void	ft_tail(char *buffer, char *path, int nb_bytes, int ac)
 		write(1, path, ft_strlen(path));
 		write(1, " <==\n", 5);
 	}
-	while (buffer[++i])
+	while (buffer[i])
+	{
 		write(STDOUT_FILENO, &buffer[i], sizeof(char));
+		i++;
+	}
 	ft_empty_string(buffer, ft_strlen(buffer));
 	free(buffer);
 }
@@ -67,9 +81,11 @@ int	main(int ac, char **av)
 	int		i;
 	int		nb_bytes;
 
-	if (ac <= 3 || ft_strcmp("-c", av[1]))
+	if (ac < 3 || ft_strcmp("-c", av[1]))
 		return (-1);
 	nb_bytes = ft_atoi(av[2]);
+	if (ac == 3)
+		ft_read_stdin(STDIN_FILENO);
 	i = 2;
 	while (ac >= 4 && ++i < ac)
 	{

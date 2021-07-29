@@ -6,7 +6,7 @@
 /*   By: pforesti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/22 15:11:04 by pforesti          #+#    #+#             */
-/*   Updated: 2021/07/23 22:33:22 by pforesti         ###   ########.fr       */
+/*   Updated: 2021/07/26 19:47:42 by pforesti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef FT_H
@@ -27,10 +27,11 @@ void	ft_putstr(char *str, int descriptor);
 int		ft_strlen(char *str);
 void	ft_empty_string(char *buffer, int len_buffer);
 
+int		ft_read_stdin(int fd_in);
 int		ft_file_opener(char **av, int i);
 char	*ft_to_EOF(int fd);
 void	ft_tail(char *buffer, char *path, int nb_bytes, int ac);
 
-# define TAILLE_BUF 2048
+# define TAILLE_BUF 30000
 
 #endif
